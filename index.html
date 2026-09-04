@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cris Borin — Escritor</title>
+<meta name="description" content="Cris Borin, escritor brasileiro, autor de Raízes do Norte.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:      #F5F3EE;
+    --paper-dim:  #EDEAE2;
+    --white:      #FFFFFF;
+    --ink:        #14161A;
+    --ink-soft:   #3E4045;
+    --slate:      #6E7278;
+    --baltic:     #1C2B3C;
+    --baltic-2:   #24384F;
+    --brick:      #A24A30;
+    --line:       #D9D5CB;
+    --line-dark:  rgba(255,255,255,0.14);
+    --max: 1240px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',ui-sans-serif,system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.serif{
+    font-family:'Newsreader',Georgia,serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+    margin:0;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 28px;}
+  @media(min-width:900px){.wrap{padding:0 56px;}}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:2px solid var(--brick);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:26px 0;
+    transition:padding .35s ease, background-color .35s ease, box-shadow .35s ease;
+  }
+  header .wrap{display:flex; align-items:center; justify-content:space-between;}
+  header.solid{
+    padding:14px 0;
+    background:rgba(245,243,238,0.92);
+    backdrop-filter:blur(10px);
+    box-shadow:0 1px 0 var(--line);
+  }
+  .brand{display:flex; flex-direction:column; line-height:1.05;}
+  .brand .name{font-family:'Newsreader',serif; font-size:19px; font-weight:500; letter-spacing:0.02em;}
+  .brand .role{font-family:'Inter',sans-serif; font-size:10px; letter-spacing:0.14em; color:var(--slate); margin-top:3px;}
+  header.on-hero:not(.solid) .brand .name,
+  header.on-hero:not(.solid) .brand .role{ color:var(--white); }
+  header.on-hero:not(.solid) .brand .role{ color:rgba(255,255,255,0.72); }
+
+  nav.primary{display:none; align-items:center; gap:34px;}
+  @media(min-width:980px){nav.primary{display:flex;}}
+  nav.primary a{
+    font-size:14px; color:var(--ink-soft); position:relative; padding-bottom:2px;
+  }
+  header.on-hero:not(.solid) nav.primary a{ color:rgba(255,255,255,0.86); }
+
+  .header-left{display:flex; align-items:center; gap:16px;}
+  .lang-switch{
+    position:relative; display:inline-flex; align-items:center; justify-content:center;
+    min-width:92px; height:42px; padding:0 32px 0 14px; margin:0;
+    border:1px solid rgba(255,255,255,0.22); border-radius:12px;
+    background:rgba(255,255,255,0.02); color:var(--white);
+    font-size:11px; letter-spacing:0.12em; text-transform:uppercase;
+    font-family:'Inter',sans-serif; font-weight:500; cursor:pointer;
+    outline:none; transition:border-color .2s ease, background-color .2s ease, color .2s ease;
+  }
+  .lang-switch::after{
+    content:''; position:absolute; right:14px; top:50%; width:6px; height:6px; margin-top:-3px;
+    border-right:1.5px solid currentColor; border-bottom:1.5px solid currentColor;
+    transform:rotate(45deg);
+    opacity:.8;
+  }
+  .lang-switch:focus-visible{border-color:rgba(255,255,255,0.5);}
+  header.solid .lang-switch{
+    background-color:rgba(255,255,255,0.1); color:var(--ink); border-color:var(--line);
+  }
+  .edition-copy[hidden], .lang-set[hidden]{display:none !important;}
+  nav.primary a::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:1px;
+    background:currentColor; transform:scaleX(0); transform-origin:left;
+    transition:transform .3s ease;
+  }
+  nav.primary a:hover::after{transform:scaleX(1);}
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    font-family:'Inter',sans-serif; font-size:13.5px; font-weight:500;
+    padding:12px 22px; border:1px solid var(--ink); color:var(--ink);
+    letter-spacing:0.01em; white-space:nowrap;
+    transition:background-color .28s ease, color .28s ease, border-color .28s ease;
+  }
+  .btn:hover{background:var(--ink); color:var(--white);}
+  .header-actions .btn,
+  .mobile-menu .foot .btn{
+    background:transparent; border-color:var(--white); color:var(--white);
+  }
+  .header-actions .btn:hover,
+  .mobile-menu .foot .btn:hover{
+    background:rgba(255,255,255,0.12); color:var(--white); border-color:var(--white);
+  }
+  header.solid .header-actions .btn{
+    background:transparent; color:var(--ink); border-color:var(--ink);
+  }
+  header.solid .header-actions .btn:hover{
+    background:var(--ink); color:var(--white); border-color:var(--ink);
+  }
+  .btn-invert{border-color:var(--white); color:var(--white);}
+  .btn-invert:hover{background:var(--white); color:var(--ink);}
+  .btn-fill{background:var(--ink); color:var(--white);}
+  .btn-fill:hover{background:var(--ink-soft); border-color:var(--ink-soft);}
+  .btn-brick{border-color:var(--brick); color:var(--brick);}
+  .btn-brick:hover{background:var(--brick); color:var(--white); border-color:var(--brick);}
+
+  header .cta-desktop{display:none;}
+  @media(min-width:980px){header .cta-desktop{display:inline-flex;}}
+
+  .burger{
+    display:flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;
+  }
+  @media(min-width:980px){.burger{display:none;}}
+  .burger span{width:22px; height:1px; background:var(--ink);}
+  header.on-hero:not(.solid) .burger span{background:var(--white);}
+
+  .mobile-menu{
+    position:fixed; inset:0; background:var(--baltic); z-index:200;
+    display:flex; flex-direction:column; justify-content:space-between;
+    padding:26px 28px 40px; transform:translateY(-100%); transition:transform .4s ease;
+  }
+  .mobile-menu.open{transform:translateY(0);}
+  .mobile-menu .top-row{display:flex; justify-content:space-between; align-items:center;}
+  .mobile-menu .close-btn{background:none;border:none;color:var(--white);font-size:14px;letter-spacing:0.1em;cursor:pointer;}
+  .mobile-menu nav{display:flex; flex-direction:column; gap:22px; margin-top:60px;}
+  .mobile-menu nav a{font-family:'Newsreader',serif; font-size:30px; color:var(--white); font-weight:400;}
+  .mobile-menu .foot{color:rgba(255,255,255,0.55); font-size:13px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:100vh; display:flex; align-items:flex-end;
+    background:linear-gradient(180deg, var(--baltic) 0%, var(--baltic-2) 60%, #14202D 100%);
+    overflow:hidden; padding-top:120px;
+  }
+  .hero::before{
+    /* subtle nordic texture: soft horizon glow */
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 20% 15%, rgba(255,255,255,0.06), transparent 45%),
+      radial-gradient(ellipse at 80% 85%, rgba(162,74,48,0.10), transparent 40%);
+    pointer-events:none;
+  }
+  .hero-img-slot{
+    position:absolute; inset:0; z-index:0;
+  }
+  .hero .wrap{position:relative; z-index:2; padding-bottom:90px; width:100%;}
+  .hero-grid{display:grid; grid-template-columns:1fr; gap:40px; align-items:end;}
+  @media(min-width:900px){.hero-grid{grid-template-columns:7fr 5fr;}}
+
+  .eyebrow{
+    font-family:'Inter',sans-serif; font-size:12px; letter-spacing:0.12em; color:rgba(255,255,255,0.62);
+    margin-bottom:22px;
+  }
+  .hero h1{
+    color:var(--white); font-size:clamp(34px,5.4vw,64px); line-height:1.12; font-weight:400;
+    max-width:14ch;
+  }
+  .hero-sub{
+    color:rgba(255,255,255,0.78); font-size:17px; max-width:46ch; margin-top:26px; line-height:1.65;
+  }
+  .hero-actions{display:flex; flex-wrap:wrap; gap:14px; margin-top:38px;}
+
+  .hero-editorial{
+    border-left:1px solid rgba(255,255,255,0.25); padding-left:26px;
+    align-self:end;
+  }
+  .hero-editorial .title{font-family:'Newsreader',serif; color:var(--white); font-size:22px; font-style:italic;}
+  .hero-editorial .author{color:rgba(255,255,255,0.6); font-size:13px; margin-top:8px; letter-spacing:0.04em;}
+
+  .scroll-cue{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%); z-index:2;
+    display:none; flex-direction:column; align-items:center; gap:8px; color:rgba(255,255,255,0.55); font-size:11px; letter-spacing:0.12em;
+  }
+  @media(min-width:900px){.scroll-cue{display:flex;}}
+  .scroll-cue .line{width:1px; height:34px; background:rgba(255,255,255,0.4); overflow:hidden; position:relative;}
+  .scroll-cue .line::after{content:'';position:absolute;top:-100%;left:0;right:0;height:100%;background:var(--white);animation:cue 2.2s ease-in-out infinite;}
+  @keyframes cue{ 0%{top:-100%;} 50%{top:100%;} 100%{top:100%;} }
+
+  /* ---------- IMAGENS ---------- */
+  .img-slot{
+    position:relative; width:100%; height:100%;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,0.05) 25%, transparent 25%) -10px 0/20px 20px,
+      linear-gradient(315deg, rgba(255,255,255,0.05) 25%, transparent 25%) -10px 0/20px 20px,
+      var(--paper-dim);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    min-height:220px;
+    color:var(--slate);
+  }
+  .img-slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+  .img-slot::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(20,22,26,.22));pointer-events:none;}
+  .img-slot .label{
+    font-family:'Inter',sans-serif; font-size:11px; letter-spacing:0.1em; padding:10px 16px;
+    border:1px dashed var(--slate); background:rgba(255,255,255,0.6);
+  }
+  .img-slot.on-dark{
+    background:rgba(255,255,255,0.03); border-color:rgba(255,255,255,0.18);
+  }
+  .img-slot.on-dark .label{color:rgba(255,255,255,0.65); border-color:rgba(255,255,255,0.3); background:rgba(0,0,0,0.15);}
+  .hero-img-slot img{width:100%;height:100%;object-fit:cover;opacity:.5;filter:saturate(.7) contrast(1.05);}
+  .hero-img-slot::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,32,45,.96) 0%,rgba(20,32,45,.66) 48%,rgba(20,32,45,.38) 100%);}
+  .image-credit{font-size:11px;color:var(--slate);margin-top:12px;}
+  .image-credit a{text-decoration:underline;text-underline-offset:3px;}
+
+  /* ---------- SECTION SCAFFOLDING ---------- */
+  section{padding:110px 0;}
+  @media(max-width:640px){section{padding:76px 0;}}
+  .section-dark{background:var(--baltic); color:var(--white);}
+  .section-dark .slate{color:rgba(255,255,255,0.62);}
+  .section-alt{background:var(--white);}
+  .hr{border:none; border-top:1px solid var(--line); margin:0;}
+  .hr-dark{border-top:1px solid rgba(255,255,255,0.16);}
+
+  .kicker{
+    font-family:'Inter',sans-serif; font-size:12px; letter-spacing:0.12em; color:var(--brick);
+    margin-bottom:18px; display:block;
+  }
+  .section-dark .kicker{color:#D98B6E;}
+  h2.headline{font-size:clamp(28px,3.6vw,42px); line-height:1.2; font-weight:400; max-width:16ch;}
+  .lede{font-size:17px; color:var(--ink-soft); max-width:56ch; margin-top:20px; line-height:1.7;}
+  .section-dark .lede{color:rgba(255,255,255,0.78);}
+
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:none;}
+
+  /* ---------- AUTOR ---------- */
+  .autor-grid{display:grid; grid-template-columns:1fr; gap:56px; margin-top:56px;}
+  @media(min-width:900px){.autor-grid{grid-template-columns:5fr 7fr; gap:72px;}}
+  .autor-grid .img-slot{aspect-ratio:4/5;}
+  .autor-text > * + *{margin-top:22px;}
+  .autor-text p{font-size:16.5px; color:var(--ink-soft); line-height:1.75; max-width:58ch;}
+  .fact-list{margin-top:34px; border-top:1px solid var(--line);}
+  .fact-row{display:flex; gap:24px; padding:16px 0; border-bottom:1px solid var(--line); font-size:14.5px;}
+  .fact-row .k{width:150px; flex-shrink:0; color:var(--slate); letter-spacing:0.02em;}
+  .fact-row .v{color:var(--ink-soft);}
+
+  /* ---------- RAÍZES DO NORTE (comercial) ---------- */
+  .book-grid{display:grid; grid-template-columns:1fr; gap:56px; margin-top:56px; align-items:start;}
+  @media(min-width:900px){.book-grid{grid-template-columns:5fr 7fr; gap:72px;}}
+  .book-grid .img-slot{aspect-ratio:2/3; max-width:380px;}
+  .book-meta{display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:32px; border-top:1px solid var(--line);}
+  .book-meta div{padding:16px 0; border-bottom:1px solid var(--line);}
+  .book-meta .k{font-size:11px; letter-spacing:0.1em; color:var(--slate); margin-bottom:6px;}
+  .book-meta .v{font-size:14.5px; color:var(--ink-soft);}
+  .book-actions{margin-top:38px; display:flex; flex-wrap:wrap; gap:14px;}
+  .theme-list{list-style:none; margin:28px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:10px;}
+  .theme-list li{font-size:13px; padding:8px 16px; border:1px solid var(--line); color:var(--ink-soft);}
+
+  /* ---------- POR QUE LER ---------- */
+  .reasons{margin-top:56px; display:grid; grid-template-columns:1fr; gap:0;}
+  @media(min-width:760px){.reasons{grid-template-columns:1fr 1fr;}}
+  .reason{padding:32px 0; border-top:1px solid var(--line);}
+  @media(min-width:760px){.reason{padding:32px 40px 32px 0;}
+    .reason:nth-child(even){padding-left:40px; padding-right:0; border-left:1px solid var(--line);}
+  }
+  .reason h3{font-size:19px; font-weight:500;}
+  .reason p{margin-top:12px; font-size:15px; color:var(--ink-soft); line-height:1.7;}
+
+  /* ---------- TRECHOS ---------- */
+  /* ---------- FINLÂNDIA ---------- */
+  .nord-grid{display:grid; grid-template-columns:1fr; gap:2px; margin-top:56px; background:var(--line-dark);}
+  @media(min-width:760px){.nord-grid{grid-template-columns:1.3fr 1fr 1fr; grid-template-rows:auto auto;}}
+  .nord-grid .img-slot{border:none; min-height:260px;}
+  @media(min-width:760px){.nord-grid .tile-a{grid-row:1/3;}}
+  .nord-copy{margin-top:44px; max-width:64ch;}
+  .nord-copy p{color:rgba(255,255,255,0.8); font-size:16px; line-height:1.8;}
+  .nord-copy p + p{margin-top:18px;}
+
+  /* ---------- NORDISCHE WURZELN ---------- */
+  .de-badge{
+    display:inline-block; font-size:11px; letter-spacing:0.12em; color:var(--slate);
+    border:1px solid var(--line); padding:6px 12px; margin-bottom:20px;
+  }
+
+  /* ---------- IMPRENSA / ENTREVISTAS ---------- */
+  .press-panel{
+    margin-top:56px; border:1px solid var(--line); padding:56px 40px; text-align:center;
+    background:var(--paper-dim);
+  }
+  .press-panel p{font-size:17px; color:var(--ink-soft); max-width:52ch; margin:0 auto; line-height:1.7;}
+  .press-panel .btn{margin-top:30px;}
+
+  .interview-grid{margin-top:48px; display:grid; grid-template-columns:1fr; gap:1px; background:var(--line);}
+  @media(min-width:700px){.interview-grid{grid-template-columns:repeat(3,1fr);}}
+
+  /* ---------- INSTAGRAM ---------- */
+  .insta-band{background:var(--white);}
+  .insta-grid{margin-top:44px; display:grid; grid-template-columns:repeat(2,1fr); gap:2px;}
+  @media(min-width:640px){.insta-grid{grid-template-columns:repeat(4,1fr);}}
+  .insta-grid .img-slot{aspect-ratio:1/1; min-height:0;}
+  .insta-grid .img-slot .label{font-size:10px; padding:6px 10px;}
+
+  /* ---------- NEWSLETTER ---------- */
+  .nl-wrap{
+    border:1px solid var(--line); padding:56px 40px; margin-top:0; background:var(--paper-dim);
+    display:flex; flex-direction:column; gap:26px;
+  }
+  @media(min-width:800px){.nl-wrap{flex-direction:row; align-items:center; justify-content:space-between;}}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:var(--baltic); color:var(--white); text-align:center; padding:130px 0;
+  }
+  .cta-final h2{color:var(--white); font-size:clamp(28px,4vw,46px); font-weight:400; max-width:18ch; margin:0 auto; line-height:1.28;}
+  .cta-final .actions{margin-top:44px; display:flex; flex-wrap:wrap; gap:16px; justify-content:center;}
+
+  /* ---------- CONTATO ---------- */
+  .contact-grid{margin-top:56px; display:grid; grid-template-columns:1fr; gap:44px;}
+  @media(min-width:760px){.contact-grid{grid-template-columns:repeat(3,1fr);}}
+  .contact-card{border-top:1px solid var(--line); padding-top:22px;}
+  .contact-card h3{font-size:16px; font-weight:500;}
+  .contact-card p{margin-top:10px; font-size:14.5px; color:var(--ink-soft);}
+  .contact-card a.link{display:inline-block; margin-top:14px; font-size:14px; border-bottom:1px solid var(--ink); padding-bottom:2px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); color:rgba(255,255,255,0.7); padding:70px 0 34px;}
+  .footer-top{display:flex; flex-direction:column; gap:44px;}
+  @media(min-width:760px){.footer-top{flex-direction:row; justify-content:space-between; align-items:flex-start;}}
+  footer .brand-f .name{font-family:'Newsreader',serif; color:var(--white); font-size:20px;}
+  footer .brand-f .role{font-size:12px; color:rgba(255,255,255,0.5); margin-top:6px;}
+  .footer-links{display:flex; flex-wrap:wrap; gap:28px;}
+  .footer-links a{font-size:13.5px; color:rgba(255,255,255,0.72);}
+  .footer-links a:hover{color:var(--white);}
+  .footer-bottom{margin-top:54px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.14); font-size:12.5px; color:rgba(255,255,255,0.45); display:flex; flex-direction:column; gap:10px;}
+  @media(min-width:760px){.footer-bottom{flex-direction:row; justify-content:space-between;}}
+
+  .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="on-hero">
+  <div class="wrap">
+    <div class="header-left">
+      <button id="lang-toggle" class="lang-switch" type="button" aria-label="Alternar idioma do site">PT</button>
+
+      <a href="#inicio" class="brand" aria-label="Cris Borin, início">
+        <span class="name">CRIS BORIN</span>
+        <span class="role nav-pt">ESCRITOR</span>
+        <span class="role nav-de" hidden>SCHRIFTSTELLER</span>
+      </a>
+    </div>
+
+    <nav class="primary" aria-label="Navegação principal">
+      <a href="#inicio" class="nav-pt">Início</a>
+      <a href="#inicio" class="nav-de" hidden>Start</a>
+      <a href="#autor" class="nav-pt">O Autor</a>
+      <a href="#autor" class="nav-de" hidden>Autor</a>
+      <a href="#livro" class="nav-pt">Livro</a>
+      <a href="#livro" class="nav-de" hidden>Buch</a>
+      <a href="#imprensa" class="nav-pt">Imprensa</a>
+      <a href="#imprensa" class="nav-de" hidden>Presse</a>
+      <a href="#contato" class="nav-pt">Contato</a>
+      <a href="#contato" class="nav-de" hidden>Kontakt</a>
+    </nav>
+
+    <div class="header-actions" style="display:flex; align-items:center; gap:14px;">
+      <a id="buy-button" href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener" class="btn cta-desktop">Comprar o livro</a>
+      <button class="burger" id="burger-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu principal" aria-hidden="true">
+  <div class="top-row">
+    <span class="brand-f name" style="font-family:'Newsreader',serif;color:#fff;font-size:18px;">CRIS BORIN</span>
+    <button class="close-btn nav-pt" id="close-menu-btn" aria-label="Fechar menu">FECHAR</button>
+    <button class="close-btn nav-de" id="close-menu-btn-de" aria-label="Menü schließen" hidden>SCHLIESSEN</button>
+  </div>
+  <nav aria-label="Navegação móvel">
+    <a href="#inicio" class="nav-pt">Início</a>
+    <a href="#inicio" class="nav-de" hidden>Start</a>
+    <a href="#autor" class="nav-pt">O Autor</a>
+    <a href="#autor" class="nav-de" hidden>Autor</a>
+    <a href="#livro" class="nav-pt">Livro</a>
+    <a href="#livro" class="nav-de" hidden>Buch</a>
+    <a href="#imprensa" class="nav-pt">Imprensa</a>
+    <a href="#imprensa" class="nav-de" hidden>Presse</a>
+    <a href="#contato" class="nav-pt">Contato</a>
+    <a href="#contato" class="nav-de" hidden>Kontakt</a>
+  </nav>
+  <div class="foot">
+    <a id="buy-button-mobile" href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener" class="btn btn-invert" style="margin-bottom:18px;">Comprar o livro</a>
+    <div>@cris_borin · Instagram</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="hero-img-slot" aria-hidden="true">
+      <img src="assets/1.jpg" alt="Porto congelado em Helsinki">
+    </div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="lang-set" data-lang="pt">
+            <span class="eyebrow">RAÍZES DO NORTE · CRIS BORIN</span>
+            <h1>Algumas viagens mudam o lugar onde estamos. Outras mudam quem somos.</h1>
+            <p class="hero-sub">Cris Borin é escritor brasileiro e autor de <em>Raízes do Norte</em>, uma obra nascida do encontro entre viagem, memória, Finlândia e reflexão.</p>
+            <div class="hero-actions">
+              <a href="#livro" class="btn btn-invert">Conheça o livro</a>
+              <a href="#autor" class="btn" style="border-color:rgba(255,255,255,0.4); color:#fff;">Conheça o autor</a>
+            </div>
+          </div>
+          <div class="lang-set" data-lang="de" hidden>
+            <span class="eyebrow">NORDISCHE WURZELN · CRIS BORIN</span>
+            <h1>Manche Reisen verändern den Ort, an dem wir sind. Andere verändern uns.</h1>
+            <p class="hero-sub">Cris Borin ist ein brasilianischer Schriftsteller und Autor von <em>Nordische Wurzeln</em>, einem Werk, das aus der Begegnung von Reise, Erinnerung, Finnland und Reflexion entstanden ist.</p>
+            <div class="hero-actions">
+              <a href="#livro" class="btn btn-invert">Mehr über das Buch</a>
+              <a href="#autor" class="btn" style="border-color:rgba(255,255,255,0.4); color:#fff;">Mehr über den Autor</a>
+            </div>
+          </div>
+        </div>
+        <div class="hero-editorial">
+          <div class="lang-set" data-lang="pt">
+            <div class="title">Raízes do Norte</div>
+            <div class="author">Cris Borin</div>
+          </div>
+          <div class="lang-set" data-lang="de" hidden>
+            <div class="title">Nordische Wurzeln</div>
+            <div class="author">Cris Borin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue"><span>ROLAR</span><span class="line"></span></div>
+  </section>
+
+  <!-- ============ AUTOR ============ -->
+  <section id="autor">
+    <div class="wrap reveal">
+      <div class="lang-set" data-lang="pt">
+        <span class="kicker">O AUTOR</span>
+        <h2 class="headline">Um escritor brasileiro entre dois mundos.</h2>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <span class="kicker">DER AUTOR</span>
+        <h2 class="headline">Ein brasilianischer Schriftsteller zwischen zwei Welten.</h2>
+      </div>
+
+      <div class="autor-grid">
+        <div class="img-slot">
+          <img src="assets/autor.png" alt="Cris Borin, autor de Raízes do Norte" loading="lazy">
+        </div>
+        <div class="autor-text">
+          <div class="lang-set" data-lang="pt">
+            <p>Cris Borin é o autor de <em>Raízes do Norte: entre Helsinki e a alma Suomi</em>, publicado de forma independente em 2026.</p>
+            <p>Este espaço acompanha o livro, suas paisagens e os caminhos que aproximam viagem, memória e literatura.</p>
+          </div>
+          <div class="lang-set" data-lang="de" hidden>
+            <p>Cris Borin ist der Autor von <em>Nordische Wurzeln: Zwischen Helsinki und der Seele Finnlands</em>, das 2026 unabhängig veröffentlicht wurde.</p>
+            <p>Dieser Raum begleitet das Buch, seine Landschaften und die Wege, die Reise, Erinnerung und Literatur miteinander verbinden.</p>
+          </div>
+
+          <div class="fact-list">
+            <div class="lang-set" data-lang="pt">
+              <div class="fact-row"><span class="k">Obra</span><span class="v">Raízes do Norte: entre Helsinki e a alma Suomi</span></div>
+              <div class="fact-row"><span class="k">Publicação</span><span class="v">17 de agosto de 2026</span></div>
+            </div>
+            <div class="lang-set" data-lang="de" hidden>
+              <div class="fact-row"><span class="k">Werk</span><span class="v">Nordische Wurzeln: Zwischen Helsinki und der Seele Finnlands</span></div>
+              <div class="fact-row"><span class="k">Veröffentlichung</span><span class="v">17. August 2026</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIVRO ============ -->
+  <section class="section-alt" id="livro">
+    <div class="wrap reveal">
+      <div class="lang-set" data-lang="pt">
+        <span class="kicker">O LIVRO</span>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <span class="kicker">DAS BUCH</span>
+      </div>
+
+      <div class="edition-copy" data-lang="pt">
+        <h2 class="headline" style="margin-top:18px;">Raízes do Norte</h2>
+        <p class="lede">Uma viagem à Finlândia que também é uma viagem para dentro.</p>
+      </div>
+
+      <div class="edition-copy" data-lang="de" hidden>
+        <h2 class="headline" style="margin-top:18px;">Nordische Wurzeln</h2>
+        <p class="lede">Eine Reise nach Finnland, die zugleich eine Reise nach innen ist.</p>
+      </div>
+
+      <div class="book-grid">
+        <div>
+          <div class="img-slot lang-set" data-lang="pt">
+            <img src="assets/capa-ptbr.jpg" alt="Capa do livro Raízes do Norte: entre Helsinki e a alma Suomi" loading="lazy">
+          </div>
+          <div class="img-slot lang-set" data-lang="de" hidden>
+            <img src="assets/5.png" alt="Capa do livro Nordische Wurzeln: Zwischen Helsinki und der finnischen Suomi" loading="lazy">
+          </div>
+          <div class="lang-set" data-lang="pt">
+            <p class="image-credit">Imagem da edição brasileira · <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener">ver na Amazon</a></p>
+          </div>
+          <div class="lang-set" data-lang="de" hidden>
+            <p class="image-credit">Bild der deutschen Ausgabe · <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener">auf Amazon ansehen</a></p>
+          </div>
+        </div>
+
+        <div>
+          <div class="edition-copy" data-lang="pt">
+            <p style="font-size:16.5px; color:var(--ink-soft); line-height:1.75; max-width:58ch;">Uma obra sobre deslocamento, paisagem e o encontro entre Helsinki e a alma Suomi.</p>
+            <ul class="theme-list">
+              <li>Viagem</li>
+              <li>Memória</li>
+              <li>Finlândia</li>
+              <li>Identidade</li>
+              <li>Reflexão</li>
+            </ul>
+            <div class="book-meta">
+              <div><div class="k">ISBN</div><div class="v">978-650-228894-8</div></div>
+              <div><div class="k">FORMATO</div><div class="v">Capa comum</div></div>
+              <div><div class="k">PÁGINAS</div><div class="v">156 páginas</div></div>
+              <div><div class="k">EDITORA</div><div class="v">Independently published</div></div>
+              <div><div class="k">IDIOMA</div><div class="v">Português</div></div>
+            </div>
+            <div class="book-actions">
+              <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener" class="btn btn-fill">Comprar na Amazon</a>
+            </div>
+          </div>
+
+          <div class="edition-copy" data-lang="de" hidden>
+            <p style="font-size:16.5px; color:var(--ink-soft); line-height:1.75; max-width:58ch;">Ein Werk über Bewegung, Landschaft und die Begegnung zwischen Helsinki und der Seele Finnlands.</p>
+            <ul class="theme-list">
+              <li>Reise</li>
+              <li>Erinnerung</li>
+              <li>Finnland</li>
+              <li>Identität</li>
+              <li>Reflexion</li>
+            </ul>
+            <div class="book-meta">
+              <div><div class="k">ISBN</div><div class="v">978-650-228894-8</div></div>
+              <div><div class="k">FORMAT</div><div class="v">Taschenbuch</div></div>
+              <div><div class="k">SEITEN</div><div class="v">156 Seiten</div></div>
+              <div><div class="k">VERLAG</div><div class="v">Independently published</div></div>
+              <div><div class="k">SPRACHE</div><div class="v">Deutsch</div></div>
+            </div>
+            <div class="book-actions">
+              <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener" class="btn btn-brick">Auf Amazon kaufen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POR QUE LER ============ -->
+  <section class="section-alt" style="padding-top:0;">
+    <div class="wrap reveal">
+      <hr class="hr">
+      <div class="lang-set" data-lang="pt" style="margin-top:70px;">
+        <span class="kicker">POR QUE LER</span>
+        <h2 class="headline">Para quem sente falta de um lugar em que nunca esteve.</h2>
+      </div>
+      <div class="lang-set" data-lang="de" hidden style="margin-top:70px;">
+        <span class="kicker">WARUM LESEN</span>
+        <h2 class="headline">Für alle, die eine Erinnerung an einen Ort spüren, den sie noch nie gesehen haben.</h2>
+      </div>
+
+      <div class="reasons">
+        <div class="lang-set" data-lang="pt">
+          <div class="reason">
+            <h3>Interesse pela Finlândia</h3>
+            <p>Para quem é atraído pela paisagem, pelo silêncio e pela cultura nórdica — e quer atravessá-los pela literatura.</p>
+          </div>
+          <div class="reason">
+            <h3>Viagens que deixam marcas</h3>
+            <p>Para quem já voltou de uma viagem diferente de como partiu, e reconhece esse deslocamento em si mesmo.</p>
+          </div>
+          <div class="reason">
+            <h3>Literatura de reflexão</h3>
+            <p>Para quem busca prosa contemplativa, mais interessada em perguntas do que em respostas fáceis.</p>
+          </div>
+          <div class="reason">
+            <h3>Encontro entre culturas</h3>
+            <p>Para quem se interessa pelo que acontece quando um olhar brasileiro encontra um mundo nórdico.</p>
+          </div>
+        </div>
+        <div class="lang-set" data-lang="de" hidden>
+          <div class="reason">
+            <h3>Interesse an Finnland</h3>
+            <p>Für alle, die von Landschaft, Stille und nordischer Kultur fasziniert sind und sie durch Literatur erleben möchten.</p>
+          </div>
+          <div class="reason">
+            <h3>Reisen, die Spuren hinterlassen</h3>
+            <p>Für alle, die nach einer Reise anders zurückgekommen sind und diese Verwandlung in sich selbst erkennen.</p>
+          </div>
+          <div class="reason">
+            <h3>Reflektierende Literatur</h3>
+            <p>Für alle, die eine nachdenkliche Prosa suchen, die mehr an Fragen als an einfachen Antworten interessiert ist.</p>
+          </div>
+          <div class="reason">
+            <h3>Begegnung zwischen Kulturen</h3>
+            <p>Für alle, die sich dafür interessieren, was geschieht, wenn ein brasilianischer Blick auf eine nordische Welt trifft.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINLÂNDIA / HELSINKI / SUOMI ============ -->
+  <section class="section-dark">
+    <div class="wrap reveal">
+      <div class="lang-set" data-lang="pt">
+        <span class="kicker">SUOMI</span>
+        <h2 class="headline" style="color:#fff;">O Norte como território — e como estado de espírito.</h2>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <span class="kicker">SUOMI</span>
+        <h2 class="headline" style="color:#fff;">Der Norden als Raum — und als Seelenzustand.</h2>
+      </div>
+
+      <div class="nord-copy">
+        <div class="lang-set" data-lang="pt">
+          <p>Helsinki organiza o tempo de outro modo: mais devagar, mais silencioso, mais atento ao que não precisa ser dito. É nesse território — geográfico e também interior — que Raízes do Norte se movimenta.</p>
+          <p>A Finlândia aparece no livro não como cenário turístico, mas como uma forma de pensar: o design que resolve sem exagerar, a natureza que não pede licença, o contraste entre o cotidiano brasileiro e a rotina nórdica.</p>
+        </div>
+        <div class="lang-set" data-lang="de" hidden>
+          <p>Helsinki ordnet die Zeit auf andere Weise: langsamer, stiller, aufmerksamer auf das, was nicht gesagt werden muss. Genau in diesem Raum — geografisch und innerlich zugleich — bewegt sich Nordische Wurzeln.</p>
+          <p>Finnland erscheint im Buch nicht als bloße Kulisse, sondern als Denkweise: das Design, das ohne Übertreibung funktioniert, die Natur, die keine Erlaubnis verlangt, und der Kontrast zwischen dem brasilianischen Alltag und der nordischen Routine.</p>
+        </div>
+      </div>
+
+      <div class="nord-grid">
+        <div class="img-slot on-dark tile-a"><img src="assets/1.jpg" alt="Porto congelado em Helsinki" loading="lazy"></div>
+        <div class="img-slot on-dark"><img src="assets/3.jpg" alt="Igreja Uspenski em Helsinki" loading="lazy"></div>
+        <div class="img-slot on-dark"><img src="assets/autor.png" alt="Cris Borin em uma praça coberta de neve" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============ IMPRENSA ============ -->
+  <section id="imprensa">
+    <div class="wrap reveal">
+      <div class="lang-set" data-lang="pt">
+        <span class="kicker">IMPRENSA</span>
+        <h2 class="headline">Imprensa</h2>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <span class="kicker">PRESSE</span>
+        <h2 class="headline">Presse</h2>
+      </div>
+
+      <div class="press-panel">
+        <div class="lang-set" data-lang="pt">
+          <p>Em breve, este espaço reunirá entrevistas, matérias e participações de Cris Borin na imprensa.</p>
+          <a href="#contato" class="btn">Contato para imprensa</a>
+        </div>
+        <div class="lang-set" data-lang="de" hidden>
+          <p>Bald wird dieser Raum Interviews, Artikel und öffentliche Auftritte von Cris Borin in der Presse versammeln.</p>
+          <a href="#contato" class="btn">Kontakt für Presseanfragen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENTREVISTAS ============ -->
+  <section class="section-alt" style="padding-top:0;">
+    <div class="wrap reveal">
+      <hr class="hr">
+      <div class="lang-set" data-lang="pt" style="margin-top:70px;">
+        <span class="kicker">ENTREVISTAS &amp; PARTICIPAÇÕES</span>
+        <h2 class="headline">Entrevistas, podcasts e eventos.</h2>
+      </div>
+      <div class="lang-set" data-lang="de" hidden style="margin-top:70px;">
+        <span class="kicker">INTERVIEWS &amp; AUFTRETE</span>
+        <h2 class="headline">Interviews, Podcasts und Veranstaltungen.</h2>
+      </div>
+
+      <div class="press-panel" style="margin-top:48px;text-align:left;">
+        <div class="lang-set" data-lang="pt">
+          <p>Novas entrevistas, participações e materiais de imprensa serão reunidos aqui conforme forem publicados.</p>
+        </div>
+        <div class="lang-set" data-lang="de" hidden>
+          <p>Neue Interviews, Auftritte und Pressematerialien werden hier gesammelt, sobald sie veröffentlicht werden.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INSTAGRAM ============ -->
+  <section class="insta-band">
+    <div class="wrap reveal">
+      <div class="lang-set" data-lang="pt">
+        <span class="kicker">REDES</span>
+        <h2 class="headline">Acompanhe Cris Borin</h2>
+        <p class="lede">Literatura, viagens, Finlândia e os bastidores de uma vida entre mundos.</p>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <span class="kicker">NETZWERKE</span>
+        <h2 class="headline">Cris Borin folgen</h2>
+        <p class="lede">Literatur, Reisen, Finnland und Einblicke in ein Leben zwischen zwei Welten.</p>
+      </div>
+
+      <div class="insta-grid">
+        <div class="img-slot"><img src="assets/1.jpg" alt="Porto congelado em Helsinki" loading="lazy"></div>
+        <div class="img-slot"><img src="assets/3.jpg" alt="Igreja Uspenski em Helsinki" loading="lazy"></div>
+        <div class="img-slot"><img src="assets/autor.png" alt="Cris Borin em Helsinki" loading="lazy"></div>
+        <div class="img-slot"><img src="assets/5.png" alt="Capa alternativa da edição alemã Nordische Wurzeln" loading="lazy"></div>
+      </div>
+
+      <div class="lang-set" data-lang="pt">
+        <a href="https://www.instagram.com/cris_borin/" target="_blank" rel="noopener" class="btn" style="margin-top:34px;">@cris_borin no Instagram</a>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <a href="https://www.instagram.com/cris_borin/" target="_blank" rel="noopener" class="btn" style="margin-top:34px;">@cris_borin auf Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACOMPANHE ============ -->
+  <section class="section-alt">
+    <div class="wrap reveal">
+      <div class="nl-wrap">
+        <div>
+          <div class="lang-set" data-lang="pt">
+            <h2 style="font-size:24px; font-weight:500;">Acompanhe o próximo capítulo</h2>
+            <p style="margin-top:10px; font-size:15px; color:var(--ink-soft); max-width:44ch;">Novos textos, lançamentos e viagens serão compartilhados no Instagram.</p>
+          </div>
+          <div class="lang-set" data-lang="de" hidden>
+            <h2 style="font-size:24px; font-weight:500;">Dem nächsten Kapitel folgen</h2>
+            <p style="margin-top:10px; font-size:15px; color:var(--ink-soft); max-width:44ch;">Neue Texte, Veröffentlichungen und Reisen werden auf Instagram geteilt.</p>
+          </div>
+        </div>
+        <div class="lang-set" data-lang="pt">
+          <a href="https://www.instagram.com/cris_borin/" target="_blank" rel="noopener" class="btn btn-fill">Seguir no Instagram</a>
+        </div>
+        <div class="lang-set" data-lang="de" hidden>
+          <a href="https://www.instagram.com/cris_borin/" target="_blank" rel="noopener" class="btn btn-fill">Auf Instagram folgen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-final">
+    <div class="wrap reveal">
+      <div class="lang-set" data-lang="pt">
+        <h2>Talvez algumas raízes precisem ser encontradas longe de casa.</h2>
+        <div class="actions">
+          <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener" class="btn btn-invert">Comprar Raízes do Norte</a>
+          <a href="#autor" class="btn" style="border-color:rgba(255,255,255,0.4); color:#fff;">Conhecer Cris Borin</a>
+        </div>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <h2>Manchmal müssen Wurzeln weit entfernt von zu Hause gefunden werden.</h2>
+        <div class="actions">
+          <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener" class="btn btn-invert">Nordische Wurzeln kaufen</a>
+          <a href="#autor" class="btn" style="border-color:rgba(255,255,255,0.4); color:#fff;">Cris Borin kennenlernen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTATO ============ -->
+  <section id="contato">
+    <div class="wrap reveal">
+      <div class="lang-set" data-lang="pt">
+        <span class="kicker">CONTATO</span>
+        <h2 class="headline">Fale com Cris Borin</h2>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <span class="kicker">KONTAKT</span>
+        <h2 class="headline">Kontaktieren Sie Cris Borin</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="lang-set" data-lang="pt">
+            <h3>Instagram</h3>
+            <p>Para acompanhar novidades e entrar em contato com Cris Borin.</p>
+            <a class="link" href="https://www.instagram.com/cris_borin/" target="_blank" rel="noopener">@cris_borin</a>
+          </div>
+          <div class="lang-set" data-lang="de" hidden>
+            <h3>Instagram</h3>
+            <p>Um Neuigkeiten zu verfolgen und mit Cris Borin in Kontakt zu treten.</p>
+            <a class="link" href="https://www.instagram.com/cris_borin/" target="_blank" rel="noopener">@cris_borin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="brand-f">
+        <div class="name">Cris Borin</div>
+        <div class="role nav-pt">Escritor brasileiro</div>
+        <div class="role nav-de" hidden>Brasilianischer Schriftsteller</div>
+      </div>
+      <div class="footer-links">
+        <a href="#autor" class="nav-pt">O Autor</a>
+        <a href="#autor" class="nav-de" hidden>Autor</a>
+        <a href="#livro" class="nav-pt">Livro</a>
+        <a href="#livro" class="nav-de" hidden>Buch</a>
+        <a href="#imprensa" class="nav-pt">Imprensa</a>
+        <a href="#imprensa" class="nav-de" hidden>Presse</a>
+        <a href="#contato" class="nav-pt">Contato</a>
+        <a href="#contato" class="nav-de" hidden>Kontakt</a>
+        <a href="https://www.instagram.com/cris_borin/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="lang-set" data-lang="pt">
+        <span>© 2026 Cris Borin. Todos os direitos reservados.</span>
+        <span>Raízes do Norte · Nordische Wurzeln</span>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <span>© 2026 Cris Borin. Alle Rechte vorbehalten.</span>
+        <span>Nordische Wurzeln · Raízes do Norte</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header: transparente sobre o hero, sólido ao rolar
+  const header = document.getElementById('site-header');
+  const hero = document.querySelector('.hero');
+  function updateHeader(){
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    header.classList.toggle('on-hero', heroBottom > 80);
+    header.classList.toggle('solid', window.scrollY > 40);
+  }
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive:true });
+
+  // Menu mobile
+  const burgerBtn = document.getElementById('burger-btn');
+  const closeBtn = document.getElementById('close-menu-btn');
+  const closeBtnDe = document.getElementById('close-menu-btn-de');
+  const mobileMenu = document.getElementById('mobile-menu');
+  function openMenu(){
+    mobileMenu.classList.add('open');
+    mobileMenu.setAttribute('aria-hidden','false');
+    burgerBtn.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+    const activeClose = document.documentElement.lang === 'de' ? closeBtnDe : closeBtn;
+    activeClose.focus();
+  }
+  function closeMenu(){
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden','true');
+    burgerBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+    burgerBtn.focus();
+  }
+  burgerBtn.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  closeBtnDe.addEventListener('click', closeMenu);
+  mobileMenu.querySelectorAll('nav a').forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+  });
+
+  // Seleção de idioma da edição do livro
+  const langToggle = document.getElementById('lang-toggle');
+  const editionCopies = document.querySelectorAll('.edition-copy');
+  const langSets = document.querySelectorAll('.lang-set');
+  const navLinksPt = document.querySelectorAll('.nav-pt');
+  const navLinksDe = document.querySelectorAll('.nav-de');
+  const buyButton = document.getElementById('buy-button');
+  const buyButtonMobile = document.getElementById('buy-button-mobile');
+
+  function setLanguage(lang){
+    if (langToggle) langToggle.textContent = lang === 'de' ? 'DE' : 'PT';
+
+    editionCopies.forEach(copy => {
+      const matches = copy.dataset.lang === lang;
+      copy.hidden = !matches;
+    });
+
+    langSets.forEach(set => {
+      const matches = set.dataset.lang === lang;
+      set.hidden = !matches;
+    });
+
+    navLinksPt.forEach(el => el.hidden = lang === 'de');
+    navLinksDe.forEach(el => el.hidden = lang === 'pt');
+
+    const buyText = lang === 'de' ? 'Das Buch kaufen' : 'Comprar o livro';
+    if (buyButton) buyButton.textContent = buyText;
+    if (buyButtonMobile) buyButtonMobile.textContent = buyText;
+  }
+
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      const nextLang = langToggle.textContent === 'PT' ? 'de' : 'pt';
+      setLanguage(nextLang);
+    });
+  }
+
+  // Reveal ao rolar (um único gatilho por seção, discreto)
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+
+</script>
+
+</body>
+</html>
