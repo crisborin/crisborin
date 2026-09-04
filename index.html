@@ -510,6 +510,12 @@
               <div class="fact-row"><span class="k">Veröffentlichung</span><span class="v">17. August 2026</span></div>
             </div>
           </div>
+          <div class="lang-set" data-lang="pt">
+            <a class="link" href="https://www.instagram.com/cris_borin/" target="_blank" rel="noopener">@cris_borin no Instagram</a>
+          </div>
+          <div class="lang-set" data-lang="de" hidden>
+            <a class="link" href="https://www.instagram.com/cris_borin/" target="_blank" rel="noopener">@cris_borin auf Instagram</a>
+          </div>
         </div>
       </div>
     </div>
@@ -547,7 +553,7 @@
             <p class="image-credit">Imagem da edição brasileira · <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener">ver na Amazon</a></p>
           </div>
           <div class="lang-set" data-lang="de" hidden>
-            <p class="image-credit">Bild der deutschen Ausgabe · <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener">auf Amazon ansehen</a></p>
+            <p class="image-credit">Bild der deutschen Ausgabe · <a href="https://a.co/d/07rp30za" target="_blank" rel="noopener">auf Amazon ansehen</a></p>
           </div>
         </div>
 
@@ -590,7 +596,7 @@
               <div><div class="k">SPRACHE</div><div class="v">Deutsch</div></div>
             </div>
             <div class="book-actions">
-              <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener" class="btn btn-brick">Auf Amazon kaufen</a>
+              <a href="https://a.co/d/07rp30za" target="_blank" rel="noopener" class="btn btn-brick">Auf Amazon kaufen</a>
             </div>
           </div>
         </div>
@@ -800,7 +806,7 @@
       <div class="lang-set" data-lang="de" hidden>
         <h2>Manchmal müssen Wurzeln weit entfernt von zu Hause gefunden werden.</h2>
         <div class="actions">
-          <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener" class="btn btn-invert">Nordische Wurzeln kaufen</a>
+          <a href="https://a.co/d/07rp30za" target="_blank" rel="noopener" class="btn btn-invert">Nordische Wurzeln kaufen</a>
           <a href="#autor" class="btn" style="border-color:rgba(255,255,255,0.4); color:#fff;">Cris Borin kennenlernen</a>
         </div>
       </div>
@@ -920,6 +926,8 @@
   const navLinksDe = document.querySelectorAll('.nav-de');
   const buyButton = document.getElementById('buy-button');
   const buyButtonMobile = document.getElementById('buy-button-mobile');
+  const portugueseBookUrl = 'https://www.amazon.com.br/dp/6502288944?bestFormat=true';
+  const germanBookUrl = 'https://a.co/d/07rp30za';
 
   function setLanguage(lang){
     if (langToggle) langToggle.textContent = lang === 'de' ? 'DE' : 'PT';
@@ -938,8 +946,11 @@
     navLinksDe.forEach(el => el.hidden = lang === 'pt');
 
     const buyText = lang === 'de' ? 'Das Buch kaufen' : 'Comprar o livro';
+    const bookUrl = lang === 'de' ? germanBookUrl : portugueseBookUrl;
     if (buyButton) buyButton.textContent = buyText;
     if (buyButtonMobile) buyButtonMobile.textContent = buyText;
+    if (buyButton) buyButton.href = bookUrl;
+    if (buyButtonMobile) buyButtonMobile.href = bookUrl;
   }
 
   if (langToggle) {
