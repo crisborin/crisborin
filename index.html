@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cris Borin — Escritor</title>
-<meta name="description" content="Cris Borin, escritor brasileiro, autor de Raízes do Norte.">
+<meta name="description" content="Cris Borin é escritor brasileiro, autor de Raízes do Norte – Entre Helsinki e a Alma Suomi, livro sobre a Finlândia que ganhou também edição em alemão.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -321,6 +321,14 @@
   .press-panel p{font-size:17px; color:var(--ink-soft); max-width:52ch; margin:0 auto; line-height:1.7;}
   .press-panel .btn{margin-top:30px;}
 
+  .press-list{display:grid; grid-template-columns:1fr; gap:18px; margin-top:34px;}
+  @media(min-width:760px){.press-list{grid-template-columns:repeat(2,1fr);}}
+  .press-card{display:block; border:1px solid var(--line); background:var(--white); transition:transform .2s ease, box-shadow .2s ease; text-decoration:none; color:inherit; overflow:hidden;}
+  .press-card:hover{transform:translateY(-2px); box-shadow:0 18px 36px rgba(0,0,0,.06);}
+  .press-card img{display:block; width:100%; aspect-ratio:16/9; object-fit:cover; object-position:top center; background:#e8e1d7;}
+  .press-card .press-body{display:flex; align-items:center; min-height:96px; padding:18px 20px 22px;}
+  .press-card span{display:block; font-size:15px; line-height:1.6; color:var(--ink-soft);}
+
   .interview-grid{margin-top:48px; display:grid; grid-template-columns:1fr; gap:1px; background:var(--line);}
   @media(min-width:700px){.interview-grid{grid-template-columns:repeat(3,1fr);}}
 
@@ -442,8 +450,8 @@
         <div>
           <div class="lang-set" data-lang="pt">
             <span class="eyebrow">RAÍZES DO NORTE · CRIS BORIN</span>
-            <h1>Algumas viagens mudam o lugar onde estamos. Outras mudam quem somos.</h1>
-            <p class="hero-sub">Cris Borin é escritor brasileiro e autor de <em>Raízes do Norte</em>, uma obra nascida do encontro entre viagem, memória, Finlândia e reflexão.</p>
+            <h1>Cris Borin — Escritor</h1>
+            <p class="hero-sub">Cris Borin é escritor brasileiro, autor de <em>Raízes do Norte – Entre Helsinki e a Alma Suomi</em>, livro sobre a Finlândia que ganhou também edição em alemão.</p>
             <div class="hero-actions">
               <a href="#livro" class="btn btn-invert">Conheça o livro</a>
               <a href="#autor" class="btn" style="border-color:rgba(255,255,255,0.4); color:#fff;">Conheça o autor</a>
@@ -492,7 +500,7 @@
         </div>
         <div class="autor-text">
           <div class="lang-set" data-lang="pt">
-            <p>Cris Borin é o autor de <em>Raízes do Norte: entre Helsinki e a alma Suomi</em>, publicado de forma independente em 2026.</p>
+            <p>Cris Borin é escritor brasileiro, autor de <em>Raízes do Norte – Entre Helsinki e a Alma Suomi</em>, livro sobre a Finlândia que ganhou também edição em alemão.</p>
             <p>Este espaço acompanha o livro, suas paisagens e os caminhos que aproximam viagem, memória e literatura.</p>
           </div>
           <div class="lang-set" data-lang="de" hidden>
@@ -702,15 +710,19 @@
         <h2 class="headline">Presse</h2>
       </div>
 
-      <div class="press-panel">
-        <div class="lang-set" data-lang="pt">
-          <p>Em breve, este espaço reunirá entrevistas, matérias e participações de Cris Borin na imprensa.</p>
-          <a href="#contato" class="btn">Contato para imprensa</a>
-        </div>
-        <div class="lang-set" data-lang="de" hidden>
-          <p>Bald wird dieser Raum Interviews, Artikel und öffentliche Auftritte von Cris Borin in der Presse versammeln.</p>
-          <a href="#contato" class="btn">Kontakt für Presseanfragen</a>
-        </div>
+      <div class="press-list">
+        <a class="press-card" href="https://textplatz.de/zeitlos/literatur-schreiben/was-ich-in-helsinki-ueber-die-finnische-seele-gelernt-habe/" target="_blank" rel="noopener noreferrer">
+          <img src="assets/news-1.jpg" alt="Helsinki e a alma finlandesa" loading="lazy">
+          <div class="press-body">
+            <span>Was ich in Helsinki über die finnische Seele gelernt habe</span>
+          </div>
+        </a>
+        <a class="press-card" href="https://jornalcuritiba.com.br/livro-de-autor-brasileiro-sobre-a-finlandia-ganha-versao-em-alemao-e-cria-ponte-entre-culturas-europeias-e-imigracao/" target="_blank" rel="noopener noreferrer">
+          <img src="assets/news-2.jpg" alt="Livro sobre a Finlândia em alemão" loading="lazy">
+          <div class="press-body">
+            <span>Livro de autor brasileiro sobre a Finlândia ganha versão em alemão</span>
+          </div>
+        </a>
       </div>
     </div>
   </section>
