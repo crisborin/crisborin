@@ -3,12 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cris Borin — Escritor</title>
+<title>Cris Borin — Escritor | Raízes do Norte, entre Helsinki e a alma Suomi</title>
 <meta name="description" content="Cris Borin é escritor brasileiro, autor de Raízes do Norte – Entre Helsinki e a Alma Suomi, livro sobre a Finlândia que ganhou também edição em alemão.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="book">
+<meta property="og:site_name" content="Cris Borin">
+<meta property="og:title" content="Cris Borin — Escritor | Raízes do Norte">
+<meta property="og:description" content="Autor de Raízes do Norte – Entre Helsinki e a Alma Suomi, livro sobre a Finlândia publicado também em alemão.">
+<meta property="og:image" content="assets/capa-ptbr.jpg">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="de_DE">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cris Borin — Escritor | Raízes do Norte">
+<meta name="twitter:description" content="Autor de Raízes do Norte – Entre Helsinki e a Alma Suomi, livro sobre a Finlândia publicado também em alemão.">
+<meta name="twitter:image" content="assets/capa-ptbr.jpg">
+
+<meta name="theme-color" content="#1C2B3C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%231C2B3C'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='30' fill='%23F5F3EE' text-anchor='middle'%3ECB%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Dados estruturados: autoridade do autor e do livro para buscadores -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "Raízes do Norte: entre Helsinki e a alma Suomi",
+  "author": {
+    "@type": "Person",
+    "name": "Cris Borin",
+    "sameAs": "https://www.instagram.com/cris_borin/"
+  },
+  "isbn": "978-650-228894-8",
+  "numberOfPages": "156",
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-08-17",
+  "publisher": "Independently published",
+  "workExample": [
+    {
+      "@type": "Book",
+      "name": "Raízes do Norte: entre Helsinki e a alma Suomi",
+      "isbn": "978-650-228894-8",
+      "inLanguage": "pt-BR",
+      "url": "https://www.amazon.com.br/dp/6502288944?bestFormat=true"
+    },
+    {
+      "@type": "Book",
+      "name": "Nordische Wurzeln: Zwischen Helsinki und der Seele Finnlands",
+      "isbn": "979-8170070152",
+      "inLanguage": "de-DE",
+      "url": "https://a.co/d/07rp30za"
+    }
+  ]
+}
+</script>
 
 <style>
   :root{
@@ -242,6 +295,43 @@
   .hero-img-slot::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,32,45,.96) 0%,rgba(20,32,45,.66) 48%,rgba(20,32,45,.38) 100%);}
   .image-credit{font-size:11px;color:var(--slate);margin-top:12px;}
   .image-credit a{text-decoration:underline;text-underline-offset:3px;}
+
+  /* ---------- BARRA DE IMPRENSA (autoridade logo após o hero) ---------- */
+  .press-strip{background:var(--white); border-bottom:1px solid var(--line); padding:26px 0;}
+  .press-strip .wrap{display:flex; flex-wrap:wrap; align-items:center; gap:20px 40px;}
+  .press-strip .ps-label{font-size:11px; letter-spacing:0.1em; color:var(--slate); white-space:nowrap;}
+  .press-strip .ps-outlets{display:flex; flex-wrap:wrap; align-items:center; gap:28px 40px; flex:1;}
+  .press-strip .ps-outlets a{font-family:'Newsreader',serif; font-size:16px; font-style:italic; color:var(--ink-soft); letter-spacing:0.01em;}
+  .press-strip .ps-outlets a:hover{color:var(--brick);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{margin-top:48px; max-width:74ch; border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:22px 2px; cursor:pointer; list-style:none;
+    font-family:'Newsreader',serif; font-size:18px; color:var(--ink); font-weight:500;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{
+    content:'+'; font-family:'Inter',sans-serif; font-size:20px; font-weight:400; color:var(--brick);
+    flex-shrink:0; transition:transform .25s ease;
+  }
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item .faq-a{padding:0 2px 24px; font-size:15px; color:var(--ink-soft); line-height:1.75; max-width:62ch;}
+
+  /* ---------- BARRA FIXA DE COMPRA (mobile) ---------- */
+  .sticky-buy{
+    position:fixed; left:0; right:0; bottom:0; z-index:150;
+    display:flex; align-items:center; justify-content:space-between; gap:14px;
+    padding:14px 20px; background:rgba(20,22,26,0.96); backdrop-filter:blur(8px);
+    transform:translateY(100%); transition:transform .35s ease;
+  }
+  .sticky-buy.show{transform:translateY(0);}
+  .sticky-buy .sb-text{color:rgba(255,255,255,0.7); font-size:12.5px; line-height:1.4;}
+  .sticky-buy .sb-text strong{display:block; color:#fff; font-family:'Newsreader',serif; font-size:15px; font-weight:500;}
+  .sticky-buy .btn{flex-shrink:0; padding:11px 18px; font-size:13px;}
+  @media(min-width:980px){.sticky-buy{display:none;}}
 
   /* ---------- SECTION SCAFFOLDING ---------- */
   section{padding:110px 0;}
@@ -483,6 +573,30 @@
     <div class="scroll-cue"><span>ROLAR</span><span class="line"></span></div>
   </section>
 
+  <!-- ============ BARRA DE IMPRENSA ============ -->
+  <section class="press-strip">
+    <div class="wrap">
+      <div class="lang-set" data-lang="pt">
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:20px 40px;">
+          <span class="ps-label">CITADO EM</span>
+          <div class="ps-outlets">
+            <a href="https://textplatz.de/zeitlos/literatur-schreiben/was-ich-in-helsinki-ueber-die-finnische-seele-gelernt-habe/" target="_blank" rel="noopener noreferrer">Textplatz.de</a>
+            <a href="https://jornalcuritiba.com.br/livro-de-autor-brasileiro-sobre-a-finlandia-ganha-versao-em-alemao-e-cria-ponte-entre-culturas-europeias-e-imigracao/" target="_blank" rel="noopener noreferrer">Jornal Curitiba</a>
+          </div>
+        </div>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:20px 40px;">
+          <span class="ps-label">ERWÄHNT IN</span>
+          <div class="ps-outlets">
+            <a href="https://textplatz.de/zeitlos/literatur-schreiben/was-ich-in-helsinki-ueber-die-finnische-seele-gelernt-habe/" target="_blank" rel="noopener noreferrer">Textplatz.de</a>
+            <a href="https://jornalcuritiba.com.br/livro-de-autor-brasileiro-sobre-a-finlandia-ganha-versao-em-alemao-e-cria-ponte-entre-culturas-europeias-e-imigracao/" target="_blank" rel="noopener noreferrer">Jornal Curitiba</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ AUTOR ============ -->
   <section id="autor">
     <div class="wrap reveal">
@@ -513,10 +627,14 @@
             <div class="lang-set" data-lang="pt">
               <div class="fact-row"><span class="k">Obra</span><span class="v">Raízes do Norte: entre Helsinki e a alma Suomi</span></div>
               <div class="fact-row"><span class="k">Publicação</span><span class="v">17 de agosto de 2026</span></div>
+              <div class="fact-row"><span class="k">Edições</span><span class="v">Português (Brasil) e Alemão</span></div>
+              <div class="fact-row"><span class="k">Imprensa</span><span class="v">Textplatz.de (Alemanha) · Jornal Curitiba</span></div>
             </div>
             <div class="lang-set" data-lang="de" hidden>
               <div class="fact-row"><span class="k">Werk</span><span class="v">Nordische Wurzeln: Zwischen Helsinki und der Seele Finnlands</span></div>
               <div class="fact-row"><span class="k">Veröffentlichung</span><span class="v">17. August 2026</span></div>
+              <div class="fact-row"><span class="k">Ausgaben</span><span class="v">Portugiesisch (Brasilien) und Deutsch</span></div>
+              <div class="fact-row"><span class="k">Presse</span><span class="v">Textplatz.de (Deutschland) · Jornal Curitiba</span></div>
             </div>
           </div>
           <div class="lang-set" data-lang="pt">
@@ -583,8 +701,9 @@
               <div><div class="k">EDITORA</div><div class="v">Independently published</div></div>
               <div><div class="k">IDIOMA</div><div class="v">Português</div></div>
             </div>
-            <div class="book-actions">
+            <div class="book-actions" style="flex-direction:column; align-items:flex-start; gap:12px;">
               <a href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener" class="btn btn-fill">Comprar na Amazon</a>
+              <span style="font-size:12.5px; color:var(--slate);">Compra segura, entrega pela Amazon Brasil.</span>
             </div>
           </div>
 
@@ -604,8 +723,9 @@
               <div><div class="k">VERLAG</div><div class="v">Independently published</div></div>
               <div><div class="k">SPRACHE</div><div class="v">Deutsch</div></div>
             </div>
-            <div class="book-actions">
+            <div class="book-actions" style="flex-direction:column; align-items:flex-start; gap:12px;">
               <a href="https://a.co/d/07rp30za" target="_blank" rel="noopener" class="btn btn-brick">Auf Amazon kaufen</a>
+              <span style="font-size:12.5px; color:var(--slate);">Sicherer Kauf, Lieferung über Amazon.</span>
             </div>
           </div>
         </div>
@@ -826,6 +946,61 @@
     </div>
   </section>
 
+  <!-- ============ PERGUNTAS FREQUENTES ============ -->
+  <section class="section-alt" id="faq">
+    <div class="wrap reveal">
+      <div class="lang-set" data-lang="pt">
+        <span class="kicker">PERGUNTAS FREQUENTES</span>
+        <h2 class="headline">Antes de comprar</h2>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <span class="kicker">HÄUFIGE FRAGEN</span>
+        <h2 class="headline">Bevor Sie kaufen</h2>
+      </div>
+
+      <div class="lang-set" data-lang="pt">
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Raízes do Norte é ficção ou não ficção?</summary>
+            <p class="faq-a">É uma narrativa de viagem e reflexão, construída a partir da experiência real do autor na Finlândia — mais próxima da prosa contemplativa do que do relato turístico convencional.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Em quais idiomas o livro está disponível?</summary>
+            <p class="faq-a">Em português, na edição brasileira original, e em alemão, na edição <em>Nordische Wurzeln</em>. Use o seletor de idioma no topo da página para ver os detalhes de cada edição.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Como recebo o livro depois da compra?</summary>
+            <p class="faq-a">A compra e a entrega são feitas diretamente pela Amazon. Ao clicar em "Comprar na Amazon", você é levado à página oficial do livro para finalizar o pedido com segurança.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Para quem esse livro é indicado?</summary>
+            <p class="faq-a">Para quem se interessa por viagens que deixam marcas, pela cultura nórdica e por uma literatura mais voltada a perguntas do que a respostas fáceis.</p>
+          </details>
+        </div>
+      </div>
+      <div class="lang-set" data-lang="de" hidden>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Ist Nordische Wurzeln Fiktion oder Sachbuch?</summary>
+            <p class="faq-a">Es ist eine Reise- und Reflexionserzählung, die auf den realen Erfahrungen des Autors in Finnland beruht — näher an kontemplativer Prosa als an einem klassischen Reisebericht.</p>
+          </details>
+          <details class="faq-item">
+            <summary>In welchen Sprachen ist das Buch erhältlich?</summary>
+            <p class="faq-a">Auf Portugiesisch, in der brasilianischen Originalausgabe, und auf Deutsch, in der Ausgabe <em>Nordische Wurzeln</em>. Nutzen Sie den Sprachumschalter oben, um die Details jeder Ausgabe zu sehen.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Wie erhalte ich das Buch nach dem Kauf?</summary>
+            <p class="faq-a">Kauf und Lieferung erfolgen direkt über Amazon. Mit einem Klick auf "Auf Amazon kaufen" gelangen Sie zur offiziellen Buchseite, um Ihre Bestellung sicher abzuschließen.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Für wen ist dieses Buch geeignet?</summary>
+            <p class="faq-a">Für alle, die sich für prägende Reisen, nordische Kultur und eine Literatur interessieren, die mehr an Fragen als an einfachen Antworten interessiert ist.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CONTATO ============ -->
   <section id="contato">
     <div class="wrap reveal">
@@ -857,6 +1032,17 @@
 
 </main>
 
+<!-- ============ BARRA FIXA DE COMPRA (mobile) ============ -->
+<div class="sticky-buy" id="sticky-buy" aria-hidden="true">
+  <div class="lang-set" data-lang="pt">
+    <span class="sb-text"><strong>Raízes do Norte</strong>Cris Borin</span>
+  </div>
+  <div class="lang-set" data-lang="de" hidden>
+    <span class="sb-text"><strong>Nordische Wurzeln</strong>Cris Borin</span>
+  </div>
+  <a id="buy-button-sticky" href="https://www.amazon.com.br/dp/6502288944?bestFormat=true" target="_blank" rel="noopener" class="btn btn-invert">Comprar</a>
+</div>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
@@ -873,6 +1059,8 @@
         <a href="#livro" class="nav-de" hidden>Buch</a>
         <a href="#imprensa" class="nav-pt">Imprensa</a>
         <a href="#imprensa" class="nav-de" hidden>Presse</a>
+        <a href="#faq" class="nav-pt">Perguntas frequentes</a>
+        <a href="#faq" class="nav-de" hidden>Häufige Fragen</a>
         <a href="#contato" class="nav-pt">Contato</a>
         <a href="#contato" class="nav-de" hidden>Kontakt</a>
         <a href="https://www.instagram.com/cris_borin/" target="_blank" rel="noopener">Instagram</a>
@@ -896,10 +1084,20 @@
   // Header: transparente sobre o hero, sólido ao rolar
   const header = document.getElementById('site-header');
   const hero = document.querySelector('.hero');
+  const stickyBuy = document.getElementById('sticky-buy');
+  const contatoSection = document.getElementById('contato');
   function updateHeader(){
     const heroBottom = hero.getBoundingClientRect().bottom;
     header.classList.toggle('on-hero', heroBottom > 80);
     header.classList.toggle('solid', window.scrollY > 40);
+
+    if(stickyBuy){
+      const pastHero = heroBottom < 0;
+      const reachedContato = contatoSection && contatoSection.getBoundingClientRect().top < window.innerHeight;
+      const shouldShow = pastHero && !reachedContato;
+      stickyBuy.classList.toggle('show', shouldShow);
+      stickyBuy.setAttribute('aria-hidden', shouldShow ? 'false' : 'true');
+    }
   }
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive:true });
@@ -940,6 +1138,7 @@
   const navLinksDe = document.querySelectorAll('.nav-de');
   const buyButton = document.getElementById('buy-button');
   const buyButtonMobile = document.getElementById('buy-button-mobile');
+  const buyButtonSticky = document.getElementById('buy-button-sticky');
   const portugueseBookUrl = 'https://www.amazon.com.br/dp/6502288944?bestFormat=true';
   const germanBookUrl = 'https://a.co/d/07rp30za';
 
@@ -965,6 +1164,11 @@
     if (buyButtonMobile) buyButtonMobile.textContent = buyText;
     if (buyButton) buyButton.href = bookUrl;
     if (buyButtonMobile) buyButtonMobile.href = bookUrl;
+
+    if (buyButtonSticky) {
+      buyButtonSticky.textContent = lang === 'de' ? 'Kaufen' : 'Comprar';
+      buyButtonSticky.href = bookUrl;
+    }
   }
 
   if (langToggle) {
