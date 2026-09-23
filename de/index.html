@@ -474,6 +474,26 @@
   .interview-grid{margin-top:48px; display:grid; grid-template-columns:1fr; gap:1px; background:var(--line);}
   @media(min-width:700px){.interview-grid{grid-template-columns:repeat(3,1fr);}}
 
+  /* ---------- CARROSSEL INSTAGRAM ---------- */
+  .insta-car-wrap{margin-top:48px; display:flex; align-items:center; gap:36px;}
+  @media(max-width:700px){.insta-car-wrap{flex-direction:column; align-items:stretch; gap:22px;}}
+  .insta-carousel{flex:0 0 240px; width:240px; border:1px solid var(--line); background:var(--white); overflow:hidden;}
+  @media(max-width:700px){.insta-carousel{width:100%; max-width:280px; margin:0 auto;}}
+  .insta-car-track{display:flex; transition:transform .45s ease;}
+  .insta-car-slide{flex:0 0 100%;}
+  .insta-car-slide img{width:100%; aspect-ratio:516/594; object-fit:cover; display:block;}
+  .insta-car-nav{display:flex; align-items:center; justify-content:center; gap:14px; padding:10px 0;}
+  .insta-car-btn{width:30px; height:30px; border:1px solid var(--line); background:var(--white); border-radius:50%; font-size:15px; line-height:1; cursor:pointer; color:var(--ink); display:flex; align-items:center; justify-content:center;}
+  .insta-car-btn:hover{background:var(--ink); color:var(--white); border-color:var(--ink);}
+  .insta-car-dots{display:flex; gap:7px;}
+  .insta-car-dot{width:6px; height:6px; border-radius:50%; background:var(--line); border:none; padding:0; cursor:pointer;}
+  .insta-car-dot.active{background:var(--ink);}
+  .insta-car-side{flex:1; min-width:0;}
+  .insta-car-side h3{font-family:'Newsreader',serif; font-size:20px; font-weight:500; margin-bottom:12px;}
+  .insta-car-side p{font-size:14.5px; line-height:1.75; color:var(--ink-soft); margin-bottom:20px;}
+  .insta-car-link{display:inline-block; border:1px solid var(--ink); padding:11px 24px; font-size:12.5px; letter-spacing:.03em; text-transform:uppercase; text-decoration:none; color:var(--ink);}
+  .insta-car-link:hover{background:var(--ink); color:var(--white);}
+
   /* ---------- INSTAGRAM ---------- */
   .insta-band{background:var(--white);}
   .insta-grid{margin-top:44px; display:grid; grid-template-columns:repeat(2,1fr); gap:2px;}
@@ -913,12 +933,33 @@
         <h2 class="headline">Interviews, Podcasts und Veranstaltungen.</h2>
       </div>
 
-      <div class="press-panel" style="margin-top:48px;text-align:left;">
-        <div class="lang-set" data-lang="pt" hidden>
-          <p>Novas entrevistas, participações e materiais de imprensa serão reunidos aqui conforme forem publicados.</p>
+      <div class="insta-car-wrap">
+        <div class="insta-carousel" data-carousel>
+          <div class="insta-car-track">
+            <div class="insta-car-slide"><img src="assets/insta-1-imersao.png" alt="Ein Eintauchen in Finnland" loading="lazy"></div>
+            <div class="insta-car-slide"><img src="assets/insta-2-relato.png" alt="Mehr als ein Reisebericht" loading="lazy"></div>
+            <div class="insta-car-slide"><img src="assets/insta-3-identidade.png" alt="Die finnische Identität" loading="lazy"></div>
+            <div class="insta-car-slide"><img src="assets/insta-4-idioma.png" alt="Die Herausforderung der Sprache" loading="lazy"></div>
+            <div class="insta-car-slide"><img src="assets/insta-5-silencio.png" alt="Die Bedeutung des Schweigens" loading="lazy"></div>
+            <div class="insta-car-slide"><img src="assets/insta-6-sinopse.png" alt="Synopsis des Buches Raízes do Norte" loading="lazy"></div>
+          </div>
+          <div class="insta-car-nav">
+            <button type="button" class="insta-car-btn" data-dir="-1" aria-label="Vorheriger Slide">‹</button>
+            <div class="insta-car-dots"></div>
+            <button type="button" class="insta-car-btn" data-dir="1" aria-label="Nächster Slide">›</button>
+          </div>
         </div>
-        <div class="lang-set" data-lang="de">
-          <p>Neue Interviews, Auftritte und Pressematerialien werden hier gesammelt, sobald sie veröffentlicht werden.</p>
+        <div class="insta-car-side">
+          <div class="lang-set" data-lang="pt" hidden>
+            <h3>No Instagram</h3>
+            <p>Trechos do carrossel publicado sobre <em>Raízes do Norte</em>. Deslize as setas ao lado para ver mais.</p>
+            <a class="insta-car-link" href="https://www.instagram.com/p/DdWim15liKG/" target="_blank" rel="noopener noreferrer">Ver publicação completa →</a>
+          </div>
+          <div class="lang-set" data-lang="de">
+            <h3>Auf Instagram</h3>
+            <p>Ausschnitte aus dem veröffentlichten Karussell zu <em>Raízes do Norte</em>. Nutzen Sie die Pfeile, um mehr zu sehen.</p>
+            <a class="insta-car-link" href="https://www.instagram.com/p/DdWim15liKG/" target="_blank" rel="noopener noreferrer">Vollständigen Beitrag ansehen →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1197,6 +1238,43 @@
   } else {
     revealEls.forEach(el => el.classList.add('in'));
   }
+
+  // Carrossel Instagram (imprensa/entrevistas)
+  document.querySelectorAll('[data-carousel]').forEach(carousel => {
+    const track = carousel.querySelector('.insta-car-track');
+    const slides = Array.from(track.children);
+    const dotsWrap = carousel.querySelector('.insta-car-dots');
+    let index = 0;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'insta-car-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Ir para o slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = Array.from(dotsWrap.children);
+
+    function goTo(i){
+      index = (i + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (index * 100) + '%)';
+      dots.forEach((d, di) => d.classList.toggle('active', di === index));
+    }
+    carousel.querySelectorAll('.insta-car-btn').forEach(btn => {
+      btn.addEventListener('click', () => goTo(index + parseInt(btn.dataset.dir, 10)));
+    });
+
+    // swipe touch
+    let startX = null;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive:true });
+    track.addEventListener('touchend', e => {
+      if(startX === null) return;
+      const diff = e.changedTouches[0].clientX - startX;
+      if(Math.abs(diff) > 40) goTo(index + (diff < 0 ? 1 : -1));
+      startX = null;
+    }, { passive:true });
+  });
 
 </script>
 
