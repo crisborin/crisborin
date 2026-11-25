@@ -550,6 +550,12 @@
   .footer-dev{font-size:12.5px; color:rgba(255,255,255,0.6); text-align:right;}
 
   .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;}
+  .resenha{display:grid; gap:32px; margin-top:64px; align-items:center;}
+  @media(min-width:760px){.resenha{grid-template-columns:minmax(0,320px) 1fr; gap:56px;}}
+  .resenha img{display:block; width:100%; max-width:340px; border:1px solid var(--line); box-shadow:0 18px 36px rgba(0,0,0,.08);}
+  .resenha h3{font-family:'Newsreader',serif; font-weight:400; font-size:clamp(24px,3vw,32px); line-height:1.2; margin:10px 0 16px;}
+  .resenha p{font-size:17px; line-height:1.7; color:var(--ink-soft); max-width:52ch; margin:0 0 14px;}
+  .resenha .by{font-size:14px; color:var(--slate);}
 </style>
 </head>
 <body>
@@ -929,6 +935,16 @@
             <span>Depois da Bienal, literatura brasileira olha para o Norte da Europa</span>
           </div>
         </a>
+      </div>
+      <div class="resenha">
+        <img src="assets/resenha-instagram.jpg" alt="Arte da resenha de Raízes do Norte publicada no Instagram por @resenhasdeoutono" loading="lazy">
+        <div>
+          <span class="kicker">RESENHA</span>
+          <h3>“Tem livro de viagem que dá vontade de fazer as malas.”</h3>
+          <p>No Instagram, a página @resenhasdeoutono comenta <em>Raízes do Norte</em> como um livro que parte da curiosidade de entender o que é viver num lugar que o viajante costuma ver só de passagem. Para a resenhista, Helsinki funciona como ponto de partida para um retrato da Finlândia que vai além dos cartões-postais, e o silêncio aparece como um jeito mais reservado de se aproximar, não como frieza.</p>
+          <p class="by">Resenha de @resenhasdeoutono no Instagram</p>
+          <a class="btn" href="https://www.instagram.com/p/DgLO3HwkWBX/" target="_blank" rel="noopener noreferrer" style="margin-top:14px;">Ler a resenha completa</a>
+        </div>
       </div>
     </div>
   </section>
